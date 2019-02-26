@@ -40,6 +40,6 @@ which means ID should consist only of  alphanumeric characters.}
 \item{...}{Further arguments to be passed to \code{\link{RAT}()}.}
 }
 \description{
-This function launches a standalone testing session for the MPT.
+This function launches a standalone testing session for the RAT
 This can be used for data collection, either in the laboratory or online.
 }

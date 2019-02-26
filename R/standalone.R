@@ -6,7 +6,7 @@ debug_locally <- !grepl("shiny-server", getwd())
 
 #' Standalone RAT
 #'
-#' This function launches a standalone testing session for the MPT.
+#' This function launches a standalone testing session for the RAT
 #' This can be used for data collection, either in the laboratory or online.
 #' @param title (Scalar character) Title to display during testing.
 #' @param num_items (Scalar integer) Number of items to be adminstered.

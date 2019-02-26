@@ -15,7 +15,7 @@ RAT(num_items = 15L, take_training = FALSE, label = "RAT",
 
 \item{take_training}{(Logical scalar) Whether to include the training phase.}
 
-\item{label}{(Character scalar) Label to give the MPT results in the output file.}
+\item{label}{(Character scalar) Label to give the RAT results in the output file.}
 
 \item{feedback}{(Function) Defines the feedback to give the participant
 at the end of the test.}
@@ -23,7 +23,7 @@ at the end of the test.}
 \item{next_item.criterion}{(Character scalar)
 Criterion for selecting successive items in the adaptive test.
 See the \code{criterion} argument in \code{\link[catR]{nextItem}} for possible values.
-\code{"bOpt"} corresponds to the setting used in the original MPT paper.}
+Defaults to \code{"bOpt"}.}
 
 \item{next_item.estimator}{(Character scalar)
 Ability estimation method used for selecting successive items in the adaptive test.
@@ -48,9 +48,8 @@ The dfeault is \code{c(0, 1)}.}
 
 \item{final_ability.estimator}{Estimation method used for the final ability estimate.
 See the \code{method} argument in \code{\link[catR]{thetaEst}} for possible values.
-The default is \code{"WL"}, weighted likelihood,
-which corresponds to the setting used in the original MPT paper.
-If a Bayesian method is chosen, its prior distribution will be defined
+The default is \code{"WL"}, weighted likelihood.
+#' If a Bayesian method is chosen, its prior distribution will be defined
 by the \code{next_item.prior_dist} and \code{next_item.prior_par} arguments.}
 
 \item{constrain_answers}{(Logical scalar)
@@ -63,16 +62,10 @@ We recommend leaving this option disabled.}
 \description{
 This function defines a RAT  module for incorporation into a
 psychTestR timeline.
-Use this function if you want to include the MPT in a
+Use this function if you want to include the RAT in a
 battery of other tests, or if you want to add custom psychTestR
 pages to your test timeline.
-For demoing the MPT, consider using \code{\link{RAT_demo}()}.
+For demoing the RAT, consider using \code{\link{RAT_demo}()}.
 For a standalone implementation of the RAT,
 consider using \code{\link{RAT_standalone}()}.
-}
-\note{
-Versions <= 0.2.0 of this package experimented with weighted likelihood
-ability estimation for item selection.
-However, subsequent versions of the package revert to Bayes modal
-ability estimation for item selection, consistent with the original MPT paper.
 }
