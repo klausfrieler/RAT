@@ -1,4 +1,4 @@
-﻿# Rhythm Ability Test (RAT)
+# Rhythm Ability Test (RAT)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1415363.svg)](https://doi.org/10.5281/zenodo.1415363)
 
@@ -12,12 +12,12 @@ in particular the versions of the `RAT`, `psychTestR`, and `psychTestRCAT` packa
 You can find these version numbers from R by running the following commands:
 
 ``` r
-library(JAJ)
+library(RAT)
 library(psychTestR)
 library(psychTestRCAT)
 if (!require(devtools)) install.packages("devtools")
 x <- devtools::session_info()
-x$packages[x$packages$package %in% c("JAJ", "psychTestR", "psychTestRCAT"), ]
+x$packages[x$packages$package %in% c("RAT", "psychTestR", "psychTestRCAT"), ]
 ```
 
 ## Installation instructions (local use)
@@ -102,7 +102,7 @@ The name of this folder will correspond to the URL.
 5. Make a text file in this folder called `app.R`
 specifying the R code to run the app.
 
-- To open the text editor: `sudo nano JAJ/app.R`
+- To open the text editor: `sudo nano RAT/app.R`
 - Write the following in the text file:
 
 ``` r
@@ -125,7 +125,7 @@ where `shiny` is the username for the Shiny process user
 
 ## Implementation notes
 
-By default, the JAJ implementation always estimates participant abilities
+By default, the RAT  implementation always estimates participant abilities
 using weighted-likelihood estimation.
 We adopt weighted-likelihood estimation for this release 
 because this technique makes fewer assumptions about the participant group being tested.

@@ -35,12 +35,12 @@ RAT_feedback_with_score <- function(dict = RAT::RAT_dict) {
 
 RAT_feedback_graph_normal_curve <- function(perc_correct, x_min = 40, x_max = 160, x_mean = 100, x_sd = 15) {
   q <-
-    ggplot2::ggplot(data.frame(x = c(x_min, x_max)), ggplot2::aes(x)) +
+    ggplot2::ggplot(data.frame(x = c(x_min, x_max)), ggplot::aes(x)) +
     ggplot2::stat_function(fun = dnorm, args = list(mean = x_mean, sd = x_sd)) +
     ggplot2::stat_function(fun = dnorm, args=list(mean = x_mean, sd = x_sd),
-                  xlim = c(x_min, (x_max - x_min) * perc_correct + 40),
-                  fill = "lightblue4",
-                  geom = "area")
+                           xlim = c(x_min, (x_max - x_min) * perc_correct + 40),
+                           fill = "lightblue4",
+                           geom = "area")
   q <- q + ggplot2::theme_bw()
   #q <- q + scale_y_continuous(labels = scales::percent, name="Frequency (%)")
   q <- q + ggplot2::scale_y_continuous(labels = NULL)
@@ -74,7 +74,7 @@ RAT_feedback_with_graph <- function(dict = RAT::RAT_dict) {
 
         perc_correct <- (results$ability_WL[nrow(results)] + 2)/4
         sum_score <- sum(results$score)
-        num_question <- nrow(results)
+        #num_question <- nrow(results)
         #perc_correct <- sum_score/num_question
         #printf("Sum scores: %d, total items: %d perc_correct: %.2f", sum_score, num_question, perc_correct)
         text_finish <- psychTestR::i18n("COMPLETED",
