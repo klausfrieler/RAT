@@ -2,7 +2,7 @@
 % Please edit documentation in R/feedback.R
 \name{RAT_feedback_with_score}
 \alias{RAT_feedback_with_score}
-\title{RAT feedback (no score)}
+\title{RAT feedback (with score)}
 \usage{
 RAT_feedback_with_score(dict = RAT::RAT_dict)
 }
@@ -10,9 +10,9 @@ RAT_feedback_with_score(dict = RAT::RAT_dict)
 \item{dict}{The psychTestR dictionary used for internationalisation.}
 }
 \description{
-Here the participant is given no feedback at the end of the test.
+Here the participant is given textual feedback at the end of the test.
 }
 \examples{
 \dontrun{
-RAT_demo(feedback = RAT_feedback_no_score())}
+RAT_demo(feedback = RAT_feedback_with_score())}
 }

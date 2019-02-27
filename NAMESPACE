@@ -2,6 +2,7 @@
 
 export(RAT)
 export(RAT_demo)
+export(RAT_feedback_with_graph)
 export(RAT_feedback_with_score)
 export(RAT_languages)
 export(RAT_standalone)

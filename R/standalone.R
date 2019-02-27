@@ -39,7 +39,8 @@ RAT_standalone  <- function(title = "Musical Rhythm Test",
                            ...) {
   feedback <- NULL
   if(with_feedback) {
-    feedback <- RAT_feedback_with_score()
+    #feedback <- RAT_feedback_with_score()
+    feedback <- RAT_feedback_with_graph()
   }
   elts <- c(
     psychTestR::new_timeline(
@@ -53,6 +54,7 @@ RAT_standalone  <- function(title = "Musical Rhythm Test",
         take_training = take_training,
         feedback = feedback,
         ...),
+    #psychTestRCAT::cat.feedback.graph("RAT"),
     psychTestR::elt_save_results_to_disk(complete = TRUE),
     #upload_results(F),
     psychTestR::new_timeline(
