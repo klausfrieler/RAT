@@ -4,11 +4,12 @@
 \alias{RAT}
 \title{RAT}
 \usage{
-RAT(num_items = 15L, take_training = FALSE, label = "RAT",
-  feedback = RAT_feedback_with_score(), next_item.criterion = "bOpt",
-  next_item.estimator = "BM", next_item.prior_dist = "norm",
-  next_item.prior_par = c(0, 1), final_ability.estimator = "WL",
-  constrain_answers = FALSE, dict = RAT::RAT_dict)
+RAT(num_items = 15L, take_training = FALSE, with_welcome = TRUE,
+  label = "RAT", feedback = RAT_feedback_with_score(),
+  next_item.criterion = "bOpt", next_item.estimator = "BM",
+  next_item.prior_dist = "norm", next_item.prior_par = c(0, 1),
+  final_ability.estimator = "WL", constrain_answers = FALSE,
+  dict = RAT::RAT_dict)
 }
 \arguments{
 \item{num_items}{(Integer scalar) Number of items in the test.}

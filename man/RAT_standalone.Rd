@@ -4,8 +4,8 @@
 \alias{RAT_standalone}
 \title{Standalone RAT}
 \usage{
-RAT_standalone(title = "Musical Rhythm Test", num_items = 16L,
-  with_feedback = FALSE, take_training = TRUE,
+RAT_standalone(title = NULL, num_items = 16L, with_feedback = FALSE,
+  take_training = TRUE, with_welcome = TRUE,
   admin_password = "conifer", researcher_email = "longgold@gold.uc.ak",
   languages = c("EN", "DE"), dict = RAT::RAT_dict,
   validate_id = "auto", ...)

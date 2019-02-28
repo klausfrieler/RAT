@@ -64,6 +64,7 @@ source("R/utils.R")
 #' @export
 RAT <- function(num_items = 15L,
                 take_training = FALSE,
+                with_welcome = TRUE,
                 label = "RAT",
                 feedback = RAT_feedback_with_score(),
                 next_item.criterion = "bOpt",
@@ -91,7 +92,7 @@ RAT <- function(num_items = 15L,
 
   psychTestR::new_timeline({
     c(
-      psychTestR::new_timeline(
+      if (with_welcome) psychTestR::new_timeline(
         psychTestR::one_button_page(
         body = shiny::div(
           shiny::h4(psychTestR::i18n("WELCOME"), style = "text-align:center"),

@@ -27,10 +27,11 @@ debug_locally <- !grepl("shiny-server", getwd())
 #' which means ID should consist only of  alphanumeric characters.
 #' @param ... Further arguments to be passed to \code{\link{RAT}()}.
 #' @export
-RAT_standalone  <- function(title = "Musical Rhythm Test",
+RAT_standalone  <- function(title = NULL,
                            num_items = 16L,
                            with_feedback = FALSE,
                            take_training = TRUE,
+                           with_welcome = TRUE,
                            admin_password = "conifer",
                            researcher_email = "longgold@gold.uc.ak",
                            languages = c("EN", "DE"),
@@ -52,6 +53,7 @@ RAT_standalone  <- function(title = "Musical Rhythm Test",
     #register_participant(),
     RAT(num_items = num_items,
         take_training = take_training,
+        with_welcome =  with_welcome,
         feedback = feedback,
         ...),
     #psychTestRCAT::cat.feedback.graph("RAT"),
@@ -63,6 +65,16 @@ RAT_standalone  <- function(title = "Musical Rhythm Test",
         psychTestR::i18n("CLOSE_BROWSER"))
       ), dict = dict)
   )
+  if(is.null(title)){
+    #extract title as named vector from dictionary
+    title <-
+      RAT::RAT_dict  %>%
+      as.data.frame() %>%
+      dplyr::filter(key == "TESTNAME") %>%
+      dplyr::select(-key) %>%
+      as.list() %>%
+      unlist()
+  }
 
   psychTestR::make_test(
     elts,
