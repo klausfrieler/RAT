@@ -28,14 +28,20 @@ media_js <- list(
   show_responses = "document.getElementById('response_ui').style.visibility = 'inherit';"
 )
 
-media_mobile_play_button <- shiny::tags$button(
+#media_mobile_play_button <- shiny::tags$button(
 #  shiny::tags$strong(psychTestR::i18n("CLICK_HERE_TO_PLAY")),
-  id = "btn_play_media",
-  style = "visibility: visible;height: 50px",
-  onclick = media_js$play_media
+#  id = "btn_play_media",
+#  style = "visibility: visible;height: 50px",
+#  onclick = media_js$play_media
+#)
+
+media_mobile_play_button <- shiny::tags$p(
+  shiny::tags$button(shiny::tags$span("\u25B6"),
+                     type = "button",
+                     id = "btn_play_media",
+                     style = "visibility: hidden",
+                     onclick = media_js$play_media)
 )
-
-
 get_audio_ui <- function(url,
                          type = tools::file_ext(url),
                          autoplay = TRUE,
@@ -59,7 +65,8 @@ get_audio_ui <- function(url,
     loop = if (loop) "loop",
     oncanplaythrough = media_js$show_media_btn,
     onplay = paste0(media_js$media_played, media_js$hide_media_btn),
-    onended = if (wait) paste0(media_js$show_responses, media_js$hide_media) else "null"
+    #onended = if (wait) paste0(media_js$show_responses, media_js$hide_media) else "null",
+    onended = if (wait) media_js$show_responses else "null"
   )
   shiny::tags$div(audio, media_mobile_play_button)
 }
@@ -105,7 +112,8 @@ audio_NAFC_page_with_img <- function(label,
                                      admin_ui = NULL) {
   stopifnot(purrr::is_scalar_character(label))
   #audio_ui <- get_audio_ui(audio_url, wait = T, loop = F)
-  audio_ui <- get_audio_element(audio_url, autoplay = T, wait = T, width = 50)
+  audio_ui <- get_audio_ui(audio_url, wait = T, loop = F)
+  #audio_ui <- get_audio_element(audio_url, autoplay = T, wait = T, width = 50)
   style <- NULL
   if(hide_response_ui) style <- "visibility:hidden"
   ui <- shiny::div(
