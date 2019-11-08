@@ -103,13 +103,15 @@ RAT <- function(num_items = 15L,
         ), dict = dict),
 
       if (take_training) psychTestR::new_timeline(instructions(audio_dir, img_dir), dict = dict),
-      main_test(label = label, audio_dir = audio_dir, img_dir = img_dir, num_items = num_items,
-                next_item.criterion = next_item.criterion,
-                next_item.estimator = next_item.estimator,
-                next_item.prior_dist = next_item.prior_dist,
-                next_item.prior_par = next_item.prior_par,
-                final_ability.estimator = final_ability.estimator,
-                constrain_answers = constrain_answers),
+      psychTestR::new_timeline(
+        main_test(label = label, audio_dir = audio_dir, img_dir = img_dir, num_items = num_items,
+                  next_item.criterion = next_item.criterion,
+                  next_item.estimator = next_item.estimator,
+                  next_item.prior_dist = next_item.prior_dist,
+                  next_item.prior_par = next_item.prior_par,
+                  final_ability.estimator = final_ability.estimator,
+                  constrain_answers = constrain_answers),
+        dict = dict),
       feedback
     )#},
     #dict = dict)
