@@ -14,7 +14,7 @@ instructions <- function(audio_dir, img_dir) {
     #psychTestR::one_button_page(shiny::div(psychTestR::i18n("INSTRUCTIONS", html = TRUE),
     #                                       style = "text-align:justify; margin-left:20%;margin-right:20%"),
     #                            button_text = psychTestR::i18n("CONTINUE")),
-    psychTestR::loop_while(
+    psychTestR::while_loop(
       test = function(state, ...) psychTestR::get_local("do_intro", state),
       logic = c(
         practice(audio_dir, img_dir)

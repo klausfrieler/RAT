@@ -1,7 +1,7 @@
 Package: RAT
 Type: Package
 Title: Musical Rhythm Ability Test
-Version: 0.1.0
+Version: 0.1.1
 Author: Klaus Frieler
 Maintainer: Klaus Frieler <kf@omniversum.de>
 Description: Implementation of a Musical Rhythm Ability Test

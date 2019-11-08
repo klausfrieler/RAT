@@ -90,8 +90,8 @@ RAT <- function(num_items = 15L,
   training_dir <- gsub("/$", "", training_dir)
   img_dir <- gsub("/$", "", img_dir)
 
-  psychTestR::new_timeline({
-    c(
+  #psychTestR::new_timeline({
+    psychTestR::join(
       if (with_welcome) psychTestR::new_timeline(
         psychTestR::one_button_page(
         body = shiny::div(
@@ -111,6 +111,6 @@ RAT <- function(num_items = 15L,
                 final_ability.estimator = final_ability.estimator,
                 constrain_answers = constrain_answers),
       feedback
-    )},
-    dict = dict)
+    )#},
+    #dict = dict)
 }
