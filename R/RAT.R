@@ -65,6 +65,7 @@ source("R/utils.R")
 RAT <- function(num_items = 15L,
                 take_training = FALSE,
                 with_welcome = TRUE,
+                with_finish = TRUE,
                 label = "RAT",
                 feedback = RAT_feedback_with_score(),
                 next_item.criterion = "bOpt",
@@ -112,7 +113,12 @@ RAT <- function(num_items = 15L,
                   final_ability.estimator = final_ability.estimator,
                   constrain_answers = constrain_answers),
         dict = dict),
-      feedback
+      feedback,
+      if(with_finish) psychTestR::new_timeline(
+        psychTestR::one_button_page(
+          body = psychTestR::i18n("FINISHED"),
+          button_text = psychTestR::i18n("CONTINUE")
+        ), dict = dict)
     )#},
     #dict = dict)
 }
