@@ -40,7 +40,7 @@ show_item <- function(audio_dir, img_dir) {
     stopifnot(is(item, "item"), nrow(item) == 1L)
     item_number <- psychTestRCAT::get_item_number(item)
     num_items_in_test <- psychTestRCAT::get_num_items_in_test(item)
-
+    messagef("Showing item %s", item_number)
     RAT_item(
       label = paste0("q", item_number),
       pattern = item$pattern,

@@ -1,8 +1,13 @@
+g_default_width <- 75 * 4
+g_default_height <- g_default_width/4
+g_max_width <- 500
 
 trigger_img_button <- function (inputId, img_src, width, height, margin = height/10){
   inputId <- htmltools::htmlEscape(inputId, attribute = TRUE)
-  style <- sprintf("width: %dpx; height: %dpx; margin: %dpx; background: url('%s'); background-size: %dpx %dpx; background-position: center center;", width, height, round(margin),
-                   img_src, width, height)
+  style <- sprintf("width: %dpx; height: %dpx; margin: %dpx; background: url('%s'); background-size: %dpx %dpx; background-position: center center;",
+                   round(width), round(height), round(margin),
+                   img_src, round(width), round(height))
+  #printf("style = %s", style)
   shiny::actionButton(inputId = inputId,
                       label = "",
                       style = style,
@@ -131,11 +136,15 @@ audio_NAFC_page_with_img <- function(label,
        admin_ui = admin_ui)
 }
 get_answer_button <- function(bin_code,
-                              width = 300, height = 75, index,
+                              width = g_default_width, height = g_default_height, index,
                               img_dir = "https://media.gold-msi.org/test_materials/RAT2/img_inv"){
 
   img_src <- file.path(img_dir, sprintf("%s.png", bin_code))
   #printf("get_answer_button img_src: %s", img_src)
+  #printf("Get answer button width %.0f -> %.0f", width, min(width, g_max_width) )
+  #rescale_factor <- g_max_width/width
+  #width <- min(width, g_max_width)
+  #height <-
   img_button <- trigger_img_button(inputId = sprintf("answer%d", index),
                                    width = width,
                                    height = height,
@@ -144,15 +153,22 @@ get_answer_button <- function(bin_code,
   img_button
 }
 get_answer_block<-function(bin_codes,
-                           width = 300, height = 75, ncols = 2,
+                           width = g_default_width, height = g_default_height, ncols = 2,
                            img_dir = "https://media.gold-msi.org/test_materials/RAT2/img_inv",
                            ...){
   n <- length(bin_codes)
   rows <- list()
   for(i in seq_len(n)){
     width_factor <- nchar(bin_codes[i])/8
-    button <- get_answer_button(bin_codes[i], width = width * width_factor, height = height,
-                                index = i, img_dir = img_dir)
+    rescale <- 1
+    if(nchar(bin_codes[i]) == 16){
+      rescale <- .75
+    }
+    button <- get_answer_button(bin_codes[i],
+                                width = width * width_factor * rescale,
+                                height = height * rescale,
+                                index = i,
+                                img_dir = img_dir)
       rows[[i]] <- button
   }
 
