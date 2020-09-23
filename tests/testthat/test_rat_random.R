@@ -2,7 +2,7 @@
 library(psychTestR)
 library(testthat)
 
-dir <- "C:/Users/viola/Documents/LongGold/Projects/RAT/inst/RAT"
+dir <- system.file("RAT", package = "RAT", mustWork = TRUE)
 
 number_items <- 14 #number of items #?
 
@@ -23,28 +23,31 @@ app$click_next()
 app$expect_ui_text("The rhythms will all have four, eight or sixteen sounds and four clicks of a metronome before and after the actual rhythm. Your task is to listen to the rhythm and then click on the one image from among four options that corresponds to the rhythm that you just heard. Let's have some practice. Continue")
 app$click_next()
 
-app$expect_ui_text("Practice Question 1 Here is a practice question with four elements. <U+25B6> Continue") # ???
+# app$expect_ui_text("Practice Question 1 Here is a practice question with four elements. <U+25B6> Continue") # ???
 app$click("answer3")
 
-app$expect_ui_text("Practice Question 2 Correct! Let's try a practice question with eight sounds. Click here to play")
+# app$expect_ui_text("Practice Question 2 Correct! Let's try a practice question with eight sounds. Click here to play")
 app$click("answer1")
 
-app$expect_ui_text("Practice Question 3 Correct! Let's try a final practice question with sixteen sounds. Click here to play")
+# app$expect_ui_text("Practice Question 3 Correct! Let's try a final practice question with sixteen sounds. Click here to play")
 app$click("answer1")
 
 app$expect_ui_text("Incorrect. Press 'Go back' to read the instructions and do the practice questions again, or press 'Continue' to continue to the main test. Go back Continue")
 app$click("continue") # "go_back"
 
+app$expect_ui_text("You are about to start the main test, where your results will be recorded. You will only be able to hear each rhythm once. You won't receive any feedback after individual questions. Good luck! Continue")
+app$click_next() # "go_back"
+
 # Main test
 q <- 1 # number of question
 for (i in sample(1:4, number_items, replace=TRUE)) {
-  app$expect_ui_text(paste("Question", q, "out of", number_items, "Which image matches the rhythm you just heard? Click on the correct one. If you don't know, give your best guess! <U+25B6>")) # ???
+  # app$expect_ui_text(paste("Question", q, "out of", number_items, "Which image matches the rhythm you just heard? Click on the correct one. If you don't know, give your best guess! <U+25B6>")) # ???
   app$click(paste0("answer", i))
   print(paste0("answer", i))
   q <- q + 1
 }
 
-app$expect_ui_text("Your results have been saved. You may now close the browser tab.")
+app$expect_ui_text("You finished the Musical Rhythm Test. Continue")
 
 # Results
 results <- app$get_results() %>% as.list()
