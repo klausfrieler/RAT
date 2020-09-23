@@ -3,5 +3,5 @@
 #' Lists the languages available for RAT implementations.
 #' @export
 RAT_languages <- function() {
-  c("EN", "DE")
+  c("en", "de")
 }

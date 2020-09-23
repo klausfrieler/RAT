@@ -4,11 +4,19 @@
 \alias{RAT_standalone}
 \title{Standalone RAT}
 \usage{
-RAT_standalone(title = NULL, num_items = 16L, with_feedback = FALSE,
-  take_training = TRUE, with_welcome = TRUE,
-  admin_password = "conifer", researcher_email = "longgold@gold.uc.ak",
-  languages = c("EN", "DE"), dict = RAT::RAT_dict,
-  validate_id = "auto", ...)
+RAT_standalone(
+  title = NULL,
+  num_items = 16L,
+  with_feedback = FALSE,
+  take_training = TRUE,
+  with_welcome = TRUE,
+  admin_password = "conifer",
+  researcher_email = "longgold@gold.uc.ak",
+  languages = c("en", "de"),
+  dict = RAT::RAT_dict,
+  validate_id = "auto",
+  ...
+)
 }
 \arguments{
 \item{title}{(Scalar character) Title to display during testing.}
@@ -28,8 +36,8 @@ at the bottom of the screen so that online participants can ask for help.}
 
 \item{languages}{(Character vector)
 Determines the languages available to participants.
-Possible languages include English (\code{"EN"}),
-and German (\code{"DE"}).
+Possible languages include English (\code{"en"}),
+and German (\code{"de"}).
 The first language is selected by default}
 
 \item{dict}{The psychTestR dictionary used for internationalisation.}
