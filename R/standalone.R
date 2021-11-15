@@ -20,7 +20,7 @@ debug_locally <- !grepl("shiny-server", getwd())
 #' @param languages (Character vector)
 #' Determines the languages available to participants.
 #' Possible languages include English (\code{"en"}),
-#' and German (\code{"de"}).
+#' German (informal: \code{"de"} and formal \code{"de_f"}), and Italian (\code{"it"})
 #' The first language is selected by default
 #' @param dict The psychTestR dictionary used for internationalisation.
 #' @param validate_id (Character scalar or closure) Function for validating IDs or string "auto" for default validation
@@ -34,7 +34,7 @@ RAT_standalone  <- function(title = NULL,
                            with_welcome = TRUE,
                            admin_password = "conifer",
                            researcher_email = "longgold@gold.uc.ak",
-                           languages = c("en", "de"),
+                           languages = c("en", "de", "de_f", "it"),
                            dict = RAT::RAT_dict,
                            validate_id = "auto",
                            ...) {
