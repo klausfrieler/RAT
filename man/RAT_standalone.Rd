@@ -7,6 +7,7 @@
 RAT_standalone(
   title = NULL,
   num_items = 16L,
+  with_id = FALSE,
   with_feedback = FALSE,
   take_training = TRUE,
   with_welcome = TRUE,

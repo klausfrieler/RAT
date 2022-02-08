@@ -1,6 +1,6 @@
-source("R/RAT.R")
-options(shiny.error = browser)
-debug_locally <- !grepl("shiny-server", getwd())
+#source("R/RAT.R")
+#options(shiny.error = browser)
+#debug_locally <- !grepl("shiny-server", getwd())
 #RAT_study_id <- 25
 
 
@@ -29,6 +29,7 @@ debug_locally <- !grepl("shiny-server", getwd())
 #' @export
 RAT_standalone  <- function(title = NULL,
                            num_items = 16L,
+                           with_id = FALSE,
                            with_feedback = FALSE,
                            take_training = TRUE,
                            with_welcome = TRUE,
@@ -43,8 +44,8 @@ RAT_standalone  <- function(title = NULL,
     #feedback <- RAT_feedback_with_score()
     feedback <- RAT_feedback_with_graph()
   }
-  elts <- c(
-    psychTestR::new_timeline(
+  elts <- psychTestR::join(
+    if(with_id) psychTestR::new_timeline(
       psychTestR::get_p_id(prompt = psychTestR::i18n("ENTER_ID"),
                            button_text = psychTestR::i18n("CONTINUE"),
                            validate = validate_id),
@@ -65,18 +66,10 @@ RAT_standalone  <- function(title = NULL,
         psychTestR::i18n("CLOSE_BROWSER"))
       ), dict = dict)
   )
+  languages <- tolower(languages)
   if(is.null(title)){
-    #extract title as named vector from dictionary
-    title <-
-      RAT::RAT_dict  %>%
-      as.data.frame() %>%
-      dplyr::filter(key == "TESTNAME") %>%
-      dplyr::select(-key) %>%
-      as.list() %>%
-      unlist()
-    names(title) <- tolower(names(title))
+    title <- map_chr(languages, ~{RAT::RAT_dict$translate("TESTNAME", .x)}) %>% set_names(languages)
   }
-
   psychTestR::make_test(
     elts,
     opt = psychTestR::test_options(title = title,
