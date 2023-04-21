@@ -35,7 +35,7 @@ RAT_standalone  <- function(title = NULL,
                            with_welcome = TRUE,
                            admin_password = "conifer",
                            researcher_email = "longgold@gold.uc.ak",
-                           languages = c("en", "de", "de_f", "it"),
+                           languages = c("en", "de", "de_f", "it", "lv"),
                            dict = RAT::RAT_dict,
                            validate_id = "auto",
                            ...) {
@@ -68,7 +68,8 @@ RAT_standalone  <- function(title = NULL,
   )
   languages <- tolower(languages)
   if(is.null(title)){
-    title <- map_chr(languages, ~{RAT::RAT_dict$translate("TESTNAME", .x)}) %>% set_names(languages)
+    title <- sapply(languages, function(.x) RAT::RAT_dict$translate("TESTNAME", .x))
+    names(title) <-  languages
   }
   psychTestR::make_test(
     elts,
