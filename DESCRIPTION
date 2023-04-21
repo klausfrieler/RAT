@@ -1,7 +1,7 @@
 Package: RAT
 Type: Package
 Title: Musical Rhythm Ability Test
-Version: 0.1.5
+Version: 0.1.6
 Author: Klaus Frieler
 Maintainer: Klaus Frieler <kf@omniversum.de>
 Description: Implementation of a Musical Rhythm Ability Test
@@ -24,4 +24,4 @@ Suggests:
     codetools,
     devtools (>= 1.13.6)
 Remotes: pmcharrison/psychTestR, pmcharrison/psychTestRCAT
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3

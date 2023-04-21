@@ -36,7 +36,7 @@ the email address of this package's developer.}
 \item{dict}{The psychTestR dictionary used for internationalisation.}
 
 \item{language}{The language you want to run your demo in.
-Possible languages include English (\code{"en"}), German (informal \code{"de"}, formal \code{"de_f"}), and Italian (\code{"it"}).
+Possible languages include English (\code{"en"}), German (informal \code{"de"}, formal \code{"de_f"}), Latvian \code{"lv"}, and Italian (\code{"it"}).
 The first language is selected by default}
 
 \item{...}{Further arguments to be passed to \code{\link{RAT}()}.}

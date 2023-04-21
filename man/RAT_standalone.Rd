@@ -13,7 +13,7 @@ RAT_standalone(
   with_welcome = TRUE,
   admin_password = "conifer",
   researcher_email = "longgold@gold.uc.ak",
-  languages = c("en", "de", "de_f", "it"),
+  languages = c("en", "de", "de_f", "it", "lv"),
   dict = RAT::RAT_dict,
   validate_id = "auto",
   ...
